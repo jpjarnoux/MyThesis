@@ -1,0 +1,50 @@
+%%%% Modèle proposé par kira.ribeiro@universite-paris-saclay.fr  %%%%
+%%%% màj : 27/01/2023 %%%%
+
+\documentclass{maThese}
+
+\usepackage{lipsum} % à retirer!!!
+\begin{document}
+
+\input{pageDeGarde}
+
+\input{resume}
+
+\newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+
+\tableofcontents
+
+\newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+
+\newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+
+\listoffigures
+
+\newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+
+\newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+
+\listoftables
+
+\newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+
+% \newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+% \addcontentsline{toc}{chapter}{Acronymes}
+% \printacronyms[title = \centering Acronymes]
+
+% \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+
+% \newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+
+% \addcontentsline{toc}{chapter}{Glossaire}
+% \printglossary
+
+% \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+
+\input{Introduction/intro}
+\input{Introduction/StateOfArt}
+\input{Pangenomique/pangenomique}
+\input{Comparaison/comparaison}
+\input{GraphDataBase/graphDB}
+
+\end{document}
