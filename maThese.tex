@@ -3,14 +3,22 @@
 
 \documentclass{maThese}
 
-\usepackage{lipsum} % à retirer!!!
 \begin{document}
-
 \input{pageDeGarde}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
 
 \input{resume}
 
 \newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
+
+\renewcommand{\thepage}{\Roman{page}}
+\setcounter{page}{1}
 
 \tableofcontents
 
@@ -40,11 +48,14 @@
 % \printglossary
 
 % \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
-
-\input{Introduction/intro}
-\input{Introduction/StateOfArt}
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+\newgeometry{left=2.5cm,right=2.5cm,top=1.5cm, bottom=2.5cm, centering}
+\input{Introduction/preambule}
+\input{Introduction/Intro}
 \input{Pangenomique/pangenomique}
 \input{Comparaison/comparaison}
 \input{GraphDataBase/graphDB}
 
+\input{References/Biblio}
 \end{document}

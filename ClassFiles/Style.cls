@@ -23,7 +23,6 @@
 
 \pagestyle{plain} % pour ne garder que les n°de page en milieu-bas et supprimer les indications de chapitre en marge haute
 
-
 \titleformat{\part}[block]
   {\centering\bfseries\huge\color{Prune}}
   {\MakeUppercase{Chapitre \thepart}}
@@ -52,3 +51,27 @@
 }
 [\vspace{0.1ex}]
 \titlespacing{\subsection}{3pc}{2ex plus .1ex minus .2ex}{.1pc}
+
+% Format de la subsubsection (subsection.1)
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}  % Subsection.1
+\titleformat{\subsubsection}[hang]{\bfseries\small}{\thesubsubsection\ .}{1pt}
+{\vspace{0.1ex}
+}
+[\vspace{0.1ex}]
+\titlespacing{\subsubsection}{3pc}{2ex plus .1ex minus .2ex}{.1pc}
+
+% Format des paragraphes (a.)
+\renewcommand{\theparagraph}{\footnotesize \alph{paragraph}.}  % Paragraphes numérotés avec des lettres
+\setcounter{secnumdepth}{4} % Inclure la numérotation des paragraphes
+\titleformat{\paragraph}[hang]{\bfseries\small}{\theparagraph}{1pt}
+{\vspace{0.1ex}
+}
+[\vspace{0.1ex}]
+\titlespacing{\paragraph}{4pc}{1.5ex plus .1ex minus .2ex}{.1pc}
+
+\newcommand{\nameBib}{Bibliographie}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom

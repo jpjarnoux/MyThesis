@@ -1,6 +1,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[french]{babel}
+\RequirePackage{apalike}
 \RequirePackage[default, oldstyle, scale=.95]{opensans} % police Open Sans
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -17,7 +18,9 @@
 \RequirePackage[absolute]{textpos} 
 \RequirePackage{colortbl}
 \RequirePackage{array}
-\RequirePackage{geometry}
+\RequirePackage[a4paper]{geometry}
+\RequirePackage{subfloat}
+\RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{hyperref}
 \hypersetup{ % paramétrage couleur des liens hypertextes, toujours garder colorlinks=true
