@@ -24,15 +24,16 @@
 
 \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
 
-\newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
-
 \listoffigures
 
 \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
 
-\newgeometry{top=4cm, bottom=4cm, left=2cm, right=2cm}
-
 \listoftables
+
+%\thispagestyle{titleFoot}
+% \addcontentsline{toc}{chapter}{Acronymes}
+% \printacronyms[title = \centering Acronymes]
+% \newpage
 
 \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
 
@@ -48,6 +49,8 @@
 % \printglossary
 
 % \newgeometry{top=4cm, bottom=4cm, left=4cm, right=4cm}
+% \input{References/Acronyms}
+% \gls{Test}
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
 \newgeometry{left=2.5cm,right=2.5cm,top=1.5cm, bottom=2.5cm, centering}
@@ -56,6 +59,6 @@
 \input{Pangenomique/pangenomique}
 \input{Comparaison/comparaison}
 \input{GraphDataBase/graphDB}
-
+\input{Conclusion/Conclusion}
 \input{References/Biblio}
 \end{document}

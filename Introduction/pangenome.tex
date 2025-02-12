@@ -1,0 +1,37 @@
+\chapter{Pangénomique: état des lieux, enjeux et ambitions}
+
+ La pangénomique est un domaine d'étude en plein essor, qui a permis d'explorer et d'analyser les génomes procaryotes sous un nouveau point de vue. Mon travail de thèse, c'est concentré sur l'analyse et la comparaison de pangénomes. Dans cette partie, je reviendrais d'abord sur l'origine, les concepts et les défis que pose la pangénomique.  Je présenterai ensuite les différentes modélisations permettant de représenter les génomes en pangénomique, pour poursuivre sur les méthodes de construction de pangénome. Pour terminer, je développerai les méthodes d'analyse existante en pangénomique. Cette partie sera aussi l'occasion de faire l'état de l'art des outils en pangénomique et de présenter l'outil PPanGGOLiN sur lequel j'ai pu travailler et que j'ai utilisé dans mes développements de thèse.
+
+\input{Introduction/Pangenome/Concept}
+\input{Introduction/Pangenome/Sequences}
+\input{Introduction/Pangenome/Familles}
+% \input{Introduction/Pangenome/Modelisation}
+% \input{Introduction/Pangenome/Construction}
+% \input{Introduction/Pangenome/Analyse}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Nom & Type de pangénome & Méthode & Reférence \\
+        \hline
+        NGSPanPipe & Séquence & Séquence représentative & \cite{kulsum_ngspanpipe_2018} \\
+        \hline
+        Spine & Séquence & Séquence représentative & \cite{ozer_characterization_2014}\\
+        \hline
+        VG toolkit & Séquence & Variant prédéterminé & \cite{garrison_variation_2018} \\
+        \hline
+        Minigraph & Séquence & Variant prédéterminé & \cite{li_design_2020} \\
+        \hline
+        Minigraph-Cactus & Séquence & MSA & \cite{hickey_pangenome_2024}\\
+        \hline
+        Harvest & Séquence & MSA & \cite{treangen_harvest_2014} \\
+        \hline
+        PGGB & Séquence & MSA & \cite{garrison_building_2024}\\
+        \hline
+        
+        
+    \end{tabular}
+    \caption{Outils de pangénomique}
+    \label{tab:pangenomicTools}
+\end{table}

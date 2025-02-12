@@ -32,7 +32,7 @@
   
 \titlespacing*{\part}
   {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-
+\renewcommand{\partautorefname}{chapitre} % Personnalise l'étiquette pour les parties
 
 \titleformat{\chapter}[hang]{\bfseries\Large\color{Prune}}{\thechapter\ -}{.1ex}
 {\vspace{0.1ex}
@@ -40,11 +40,36 @@
 [\vspace{1ex}]
 \titlespacing{\chapter}{0pc}{0ex}{0.5pc}
 
+\makeatletter
+\@addtoreset{chapter}{part} % Réinitialise le compteur de chapitres à chaque nouvelle part
+\renewcommand\thechapter{\arabic{chapter}} % Supprime la numérotation de la part devant les chapitres
+\makeatother
+
+\renewcommand{\chapterautorefname}{partie} % Personnalise l'étiquette pour les chapitres
+
+\makeatletter
+% Ajoute le numéro de la part dans les références automatiques
+\patchcmd{\autoref}
+  {\thechapter} % Rechercher l'utilisation directe de \thechapter
+  {\thepart.\thechapter} % Inclure le numéro de la part avant le chapitre
+  {}{}
+\makeatother
+
 \titleformat{\section}[hang]{\bfseries\normalsize}{\thesection\ .}{0.5pt}
 {\vspace{0.1ex}
 }
 [\vspace{0.1ex}]
 \titlespacing{\section}{1.5pc}{4ex plus .1ex minus .2ex}{.8pc}
+
+\renewcommand{\sectionautorefname}{partie} % Personnalise l'étiquette pour les chapitres
+
+\makeatletter
+% Ajoute le numéro de la part dans les références automatiques
+\patchcmd{\autoref}
+  {\thesection} % Rechercher l'utilisation directe de \thechapter
+  {\thechapter.\thesection} % Inclure le numéro de la part avant le chapitre
+  {}{}
+\makeatother
 
 \titleformat{\subsection}[hang]{\bfseries\small}{\thesubsection\ .}{1pt}
 {\vspace{0.1ex}
@@ -54,6 +79,17 @@
 
 % Format de la subsubsection (subsection.1)
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}  % Subsection.1
+
+\renewcommand{\subsectionautorefname}{sous-partie} % Personnalise l'étiquette pour les chapitres
+
+\makeatletter
+% Ajoute le numéro de la part dans les références automatiques
+\patchcmd{\autoref}
+  {\thesubsection} % Rechercher l'utilisation directe de \thechapter
+  {\thesection.\thesubsection} % Inclure le numéro de la part avant le chapitre
+  {}{}
+\makeatother
+
 \titleformat{\subsubsection}[hang]{\bfseries\small}{\thesubsubsection\ .}{1pt}
 {\vspace{0.1ex}
 }
@@ -75,3 +111,22 @@
 \widowpenalty=10000
 \displaywidowpenalty=10000
 \raggedbottom
+
+
+% Commande personnalisée pour images pleine page
+\newcommand{\fullpageimage}[4]{
+    \afterpage{%
+        \clearpage
+        \ifodd\value{page} % Vérifie si la page est impaire
+            \hbox{} % Ajoute une page vide pour forcer à gauche
+            \clearpage
+        \fi
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1}
+            \caption[#3]{#2} % Légende courte (#3) et complète (#2)
+        \label{#4}
+        \end{figure}
+        \clearpage
+    }
+}

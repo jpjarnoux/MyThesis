@@ -1,0 +1,57 @@
+\section{Pangénome de séquences}
+
+\subsection{Pangénome basé sur une séquence représentative}
+
+Le premier type de pangénome basé sur les séquences correspond à un ensemble de génomes dont l'alignement minimise le nombre de régions homologues tout en rendant compte de toute la diversité. L'objectif derrière ces pangénomes est d'obtenir une séquence pangénomique de référence. De façon contrintuitive (par rapport à la définition "sans-référence" des pangénomes), pour construire ces pangénomes, on utilise une séquence réprésentative comme base. À partir de cette référence, toutes séquences non redondantes, présentes dans au moins un génome, est ajoutée comme référence non redondante (NRR \textit{NonRedundant Reference} en anglais). L'ensemble, séquence représentante et NRRs, forme alors la séquence pangénomique de référence.
+
+\subsubsection{Méthode de construction}
+
+Pour construire ces pangénomes, il faut d'abord identifier une séquence représentative. Les autres séquences, en générale des séquences non assemblées (lectures ou \textit{reads} en anglais), sont alignées contre la représentante et les séquences non alignable sont considérées comme des NRRs potentiels. Les NRRs de taille inférieure à 500 pb sont exclues, ainsi que celles dont la similarité avec la représentante est supérieure à un seuil (90 \% en général). Les NRRs restantes sont comparées à des bases de données pour retirer tous les contaminants potentiels. De ce schéma général, on peut identifier 4 méthodes différentes pour l'identification des NRRs potentiels :
+\begin{itemize}
+    \item \textbf{Assemblage de type métagénomique} : les lectures non alignées sur la référence sont regroupées et assemblées \textit{de novo}. Les contigs obtenue sont ajoutés à la séquence représentante. Cette méthode est efficace même avec une faible couverture des lectures.
+    \item \textbf{Assemblage indépendant des \textit{reads} non alignés} : Toutes les lectures non alignées sont séparées par échantillon\footnote{Ensemble de lecture obtenue simultanément} et assemblées \textit{de novo} indépendamment. Les contigs obtenus sont regroupés selon leur similarité. Dans chaque groupe, un contig référent est identifié et est intégré à la séquence référente. Cette méthode nécessite une couverture d’au moins 10×, pour obtenir des contigs de taille suffisante.
+    \item \textbf{Assemblage itératif} : Pour un premier échantillon, les lectures non alignées sont assemblées et intégrées au génome de référence, qui est ensuite utilisé pour traiter l’échantillon suivant. Ce processus est répété pour tous les échantillons.
+    \item \textbf{Assemblage génomique indépendant} : chaque échantillon est assemblé indépendamment, et les contigs obtenues sont alignées à la référence. Les contigs non alignés sont regroupés par similarité et un contig référent est ajouté à la séquence référente.
+\end{itemize}
+
+Le choix de la méthode dépend du type et de la quantité des données disponibles. Avec une faible couverture (<10×) et un grand nombre d’échantillons, l’approche métagénomique est recommandée, bien qu’elle puisse produire des contigs chimériques. Avec une couverture plus élevée (>10×), l’assemblage indépendant ou l’approche itérative sont préférables. Cette dernière est plus lente, mais facilite l’ajout de nouveaux échantillons. Enfin, si plusieurs assemblages de haute qualité existent déjà, l’assemblage génomique indépendant est la meilleure option. Ces méthodes peuvent être combinées pour optimiser l’utilisation des données disponibles.
+ 
+\subsubsection{Domaines d'application des pangénomes basé sur une séquence représentative}
+
+Ces pangénomes sont particulièrement utiles lorsque les données de départ sont des \textit{lectures}. En utilisant ces modèles, il est possible de revenir à une séquence linéaire qui peut être utilisé dans les outils classiques de génomique. De plus, il peut également être utilisé comme étape préliminaire à la construction d'autres types de pangénomes, en réduisant rapidement la redondance dans un sous-ensemble proche de génomes. 
+
+L'outil NGSPanPipe \cite{kulsum_ngspanpipe_2018} est un pipeline intégré conçu pour l'identification du pangénome à partir de lectures courtes (short reads) issues du séquençage de nouvelle génération (NGS). Contrairement à d'autres méthodes nécessitant des prétraitements des lectures, NGSPanPipe permet une analyse directe des reads bruts pour identifier le pangénome. Il ne génère pas de séquence pangénomique linéaire, mais il permet de reconstruire des contigs à partir des lectures en utilisant un génome de référence. Les contigs obtenue à partir des lectures alignées, permettent de calculer la couverture du génome par rapport au pangénome. Les lectures non alignées sont comparées à des bases de données de \textit{reads} pour identifier de nouveaux \textit{reads}, puis ils sont assemblés en contigs. L'ensemble des contigs (de lectures alignées et non alignées) sont annotés et utilisés pour construire une matrice binaire représentant la présence ou l'absence des gènes dans la séquence de référence.
+
+\subsection{Pangénome graphe}
+
+Les graphes de séquences sont un modèle de pangénome permettant de représenter la diversité génomique à partir d'une séquence référence ou non. Dans tous les cas, des segments de séquences vont constituer les n\oe uds du pangénome et les arrêtes seront étiquetés par des informations permettant de retrouver le lien entre les segments (comme l'organisation dans les génomes). Ce modèle pangénomique à l'intérêt de représenter toute la diversité, codant et non codant. 
+
+\subsubsection{Méthodes et outils de construction}
+
+\paragraph{Graphe de variant prédéterminé}
+
+La première méthode de construction des graphes de pangénome se base sur l'utilisation d'une séquence référente et d'un fichier contenant les variations connues dans les autres séquences par rapport à cette référence. Cette méthode à l'intérêt de demander peu de ressource, car les variations sont prédéterminées et donner en entrée. Par contre, elle demande un génome complet de bonne qualité pour générer un graphe de bonne qualité.
+
+L'outil VG (\textit{Variation Graph toolkit}) \cite{garrison_variation_2018}, contient un ensemble d'outil permettant de générer un graphe de variant. À partir de ce graphe, qui peut être assimilé à un graphe de pangénome, il est possible de détecter les variants structuraux (SVs) et les SNPs rapidement. Le graphe est indexé, rendant les recherches et l'alignement plus efficace, notamment dans l'alignement de lectures ou dans la recherche de variant génétique (\textit{variant calling}). L'outil a d'abord été développé pour la génomique humaine, il est tout à fait possible de l'utiliser avec des génomes procaryotes.
+
+L'outil Minigraph \cite{li_design_2020}, lui aussi développer pour le variant calling sur le génome humain, propose une méthode demandant moins de ressources que VG. Le graphe est plus léger, sans annotation, permettant de construire des graphes de pangénome de grandes tailles, en utilisant peu de mémoire de calcul et de stockage. Minigraph, permet de capturer les grandes variations génomiques, mais est moins performant sur la détection des SNPs par rapport à VG.
+
+\paragraph{Graphe d'alignement multiple}
+
+Une méthode, proche de la précédente, est celle basée sur l'alignement multiple des séquences (MSA\footnote{cf. \autoref{paragraph:MSA}}) entre elle. Cette méthode n'est pas dépendante d'une séquence de référente. Le MSA permet de déterminer les variations entre les séquences, ce qui augmente le coût en ressource par rapport au graphe de variant prédéterminé. Toutefois, cette méthode est plus adaptée dans le cas où plusieurs séquences de bonne qualité sont disponibles pour construire le pangénome. En effet, le MSA permet de se passer du biais de la séquence référente dans la construction du graphe et d'ainsi mieux représenter la diversité génomique.
+
+L'outil Harvest \cite{treangen_harvest_2014}, permet de comparer des génomes étroitement apparentés. Pour optimiser l'étape d'alignement, il utilise l'outil progressiveMauve \cite{darling_progressivemauve_2010}, qui fait un alignement progressif des séquences. Après l'alignement, il identifie le \textit{core genome} dans le pangénome et génère une phylogénie basée sur une matrice des SNPs. Bien qu'étant rapide et efficace, il n'est pas adapté aux génomes très divergents et il ne permet pas d'analyser les éléments mobiles (MGE).
+
+PGGB \cite{garrison_building_2024}, utilise des algorithmes de graphes de préfixes minimaux (MPHF\footnote{Minimal Perfect Hash Function (MPHF) est une fonction qui associe de manière unique chaque élément d’un ensemble sans collisions et avec un espace mémoire minimal}), pour compresser le graphe et optimiser l'alignement. Il est capable d'identifier et de représenter les SNPs, SV, et les MGEs de manière efficace. PGGB est conçu pour mener des études pangénomique à grande échelle, prenant en compte de grande quantité de séquences, ce qui demande des ressources disponibles importantes. De plus, c'est un outil assez complet pour les analyses, ce qui peut le rendre difficile d'accès.
+
+\paragraph{Graphe de De Bruijn}
+
+Les graphes de De Bruijn (De Bruijn Graph : DBG) sont des graphes orientés dont les n\oe uds représente des k-mers et les arêtes le chevauchement entre le suffixe et le préfixe (de taille k-1) des k-mers. Ainsi, en suivant un chemin, il est possible de reconstituer une séquence. C'est pourquoi, les DBG sont utilisés dans de nombreuses applications en bioinformatique (assemblage, correction des erreurs de séquençage, métagénomique\dots) et notamment en pangénomique.
+
+Les DBG, permettent d'avoir une structure compacte des séquences du pangénome. Les n\oe uds et les arêtes sont colorées en fonction des génomes dans lesquelles ils sont retrouvés. Pour compacter encore plus le graphe, les régions \textit{core} (correspondant à une suite de k-mer retrouvé dans tous les génomes) peuvent être fusionné en un seul n\oe ud, qui sera étiqueté comme la séquence complète fusionnée.
+
+%SplitMEM
+%PanTools
+%TwoPaCo
+
+\subsubsection{Application des graphes de pangénome.}

@@ -1,12 +1,27 @@
-\chapter{Génomique comparées des procaryotes}
+\chapter{Génomique comparée des procaryotes}
+\label{chap:comp}
+
+La comparaison des génomes et de leur séquence d'ADN, ou plus largement la comparaison de séquences, est au c\oe ur des analyses bioinformatique. Avec la croissance exponentielle du nombre de génomes disponible dans les banques (cf. \autoref{sec:db}), il est essentiel de comparer les nouvelles séquences à celle déjà connue. Cette comparaison permettra de déduire, entre autres, les fonctions qu'elles contiennent et leur lien évolutif. 
+
+Comparer l'information contenue dans les génomes est au c\oe ur de ce travail de thèse. Dans cette partie, j'aborderai les concepts informatiques et les algorithmes utilisés dans les méthodes bioinformatiques. je reviendrai aussi sur les notions présentées précédemment et comment elles sont appliquées dans les outils. Pour terminer, nous présenterons un type d'analyse de génomique comparé qui est largement présent dans mon travail de thèse, l'analyse de système biologique.
+
 \section{Analyse comparative des génomes : méthodes et applications}
 \label{sec:comp_gen}
-\subsection{Comparaison des séquences}
-\subsection{Statistique et séquence}
-\subsection{Utilisation des graphes}
+
+L'analyse comparée des génomes regroupe une grande diversité d'analyses et de thématiques. On peut diviser ces analyses en 3 grands domaines : l'analyse des séquences, l'analyse des structures et l'analyse fonctionnelle. Dans mon travail de thèse, je me suis concentré sur l'analyse par comparaison de séquences. Dans la suite, je présenterai donc uniquement des méthodes de comparaison de séquence.
+
+Pour comparer les séquences, on mesure leur similarité. Cette mesure permet de conclure sur le caractère homologue des séquences comparées. Plus les séquences sont similaires, plus elles sont homologues\footnote{\textit{N.B} : L'homologie est une conclusion qualitative de l'observation quantitative de la similarité. On considère qu'une similarité de 30\% permet de dire que 2 séquence sont homologues.}. Ce principe de base simple se révèle être un problème non trivial étant donné l'ensemble des mécanismes gouvernant l'évolution des génomes procaryotes. Pour comparer les génomes sur la similarité des séquences, on peut utiliser la séquence nucléotidique, mais aussi en fonction du contexte, les séquences d'ARN ou de protéines. Pour l'ADN et l'ARN, la similarité va se confondre avec la notion d'identité, par contre pour les séquences d'acides aminés ces termes n'ont pas le même sens. Lorsqu'on mesure l'identité de séquences entre 2 protéines, on mesure le pourcentage de résidus identiques entre 2 séquences alignées. Pour la similarité, si les 2 acides aminés ont les mêmes propriétés physico-chimiques, ils seront considérés comme similaires. La mesure d'identité entre 2 séquences d'acide aminé sera toujours inférieure ou égale à celle de sa similarité.
+
+Les méthodes de comparaisons de séquences ont largement évolué en peu de temps. Il est donc important de mettre les méthodes en perspective avec l'état des technologies de séquençage et d'informatique, ainsi qu'au nombre de génomes disponible. Malgré tout, ces méthodes restent encore utilisées dans certain contexte et sont une base de réflexions et de connaissances. 
+
+\input{Introduction/Comparaison/Alignement}
+
+\input{Introduction/Comparaison/Graph}
+
+\input{Introduction/Comparaison/Statistique}
+
 \subsection{Application de la génomique comparée pour l'étude des procaryotes}
+
 \subsection{Intelligence artificielle : machine learning et deep learning}
-\section{Système biologique}
-\subsection{Définition et intérêt}
-\subsection{Méthode de détections}
-\subsection{Systèmes de défense aux phages}
+
+\input{Introduction/Comparaison/Systems}

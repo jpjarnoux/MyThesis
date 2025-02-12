@@ -6,15 +6,19 @@
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
+\RequirePackage{enumitem}
 \RequirePackage{caption}
 \captionsetup[figure]{font=small,labelfont=small}
 \RequirePackage{xcolor} % où color selon l'installation
 \RequirePackage[xindy, acronyms]{glossaries}
 \RequirePackage{mdframed}
+\RequirePackage{longtable}
 \RequirePackage{multirow} %% Pour mettre un texte sur plusieurs rangées
 \RequirePackage{multicol} %% Pour mettre un texte sur plusieurs colonnes
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
+\RequirePackage{afterpage}
+\RequirePackage{ifthen}
 \RequirePackage[absolute]{textpos} 
 \RequirePackage{colortbl}
 \RequirePackage{array}
@@ -22,6 +26,8 @@
 \RequirePackage{subfloat}
 \RequirePackage{subcaption}
 \RequirePackage{titlesec}
+\RequirePackage{pdfpages}
+\RequirePackage{etoolbox}
 \RequirePackage{hyperref}
 \hypersetup{ % paramétrage couleur des liens hypertextes, toujours garder colorlinks=true
     colorlinks=true,
