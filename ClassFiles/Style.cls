@@ -16,6 +16,18 @@
 \definecolor{D4}{RGB}{70,195,210}
 \definecolor{A5}{RGB}{0,128,122}
 \definecolor{B5}{RGB}{64,183,105}
+
+%ANNEXE
+\makeatletter
+    \newcommand\tableofcontentsA{%
+        \chapter*{\centering Table des Annexes
+            \@mkboth{%
+               \centering\MakeUppercase Table des Annexes} {\centering\MakeUppercase Table des Annexes}}%
+        \@starttoc{toca}%
+        }
+\makeatother
+
+\setlength{\parskip}{6pt}
 \definecolor{C5}{RGB}{140,198,62}
 \definecolor{D5}{RGB}{213,223,61}
 
@@ -112,6 +124,21 @@
 \displaywidowpenalty=10000
 \raggedbottom
 
+\makeatletter
+% Modifier la numérotation des figures : Partie.Chapitre
+\renewcommand{\thefigure}{\thepart.\thechapter.\arabic{figure}} % numérotation Chapitre.Figure
+\makeatother
+
+\makeatletter
+% Modifier la numérotation des figures : Partie.Chapitre
+\renewcommand{\thetable}{\thepart.\thechapter.\arabic{table}} % numérotation Chapitre.Figure
+\makeatother
+
+
+\newcommand{\blankline}{
+\\
+\vspace{12pt}
+\\}
 
 % Commande personnalisée pour images pleine page
 \newcommand{\fullpageimage}[4]{

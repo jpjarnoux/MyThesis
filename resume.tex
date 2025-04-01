@@ -4,55 +4,45 @@
 \thispagestyle{empty}
 \newgeometry{top=1.5cm, bottom=1.25cm, left=2cm, right=2cm}
 
-
+\footnotesize
 \noindent 
 %*****************************************************
 %***** LOGO DE L'ED À CHANGER IMPÉRATIVEMENT *********
 %*****************************************************
 \includegraphics[height=2.45cm]{images/logos/logo_usp_SDSV.png}
-\vspace{1cm}
 %*****************************************************
-
-\small
 
 \begin{mdframed}[linecolor=Prune,linewidth=1]
 
-\textbf{Titre:} Méthodes d’analyse comparée des pangénomes procaryotes : explorer la diversité génomique inter-espèces pour une meilleure  compréhension du métabolisme
+\textbf{Titre :} Méthodes d’analyse comparée des pangénomes procaryotes : explorer la diversité génomique inter-espèces pour une meilleure  compréhension du métabolisme
 
-\noindent \textbf{Mots clés:} Bioinformatique, Microbiologie environnementale, Pangénomique, Dynamique des génomes, Îlot génomique, Systèmes de défense aux phages
-
-\vspace{-.5cm}
+\noindent \textbf{Mots clés :} Bioinformatique, Microbiologie environnementale, Pangénomique, Dynamique des génomes, Îlot génomique, Systèmes de défense aux phages
+\vspace{-12pt}
 \begin{multicols}{2}
-\noindent \textbf{Résumé:} Ces dernières années ont vu l'explosion des projets de séquençage conduisant à un déluge de plusieurs centaines de milliers de génomes disponibles dans les banques publiques. Les approches de génomique comparée en microbiologie utilisent maintenant des milliers de génomes pour analyser la diversité d’une espèce. En effet, de nombreuses études se concentrent sur le contenu global en gènes d'une espèce (le pangénome) pour comprendre son évolution en termes de gènes communs et accessoires au regard de données épidémiologiques ou environnementales [1]. Néanmoins, le traitement de cette masse de données impose un changement de paradigme dans la représentation des connaissances et dans les algorithmes utilisés [2]. 
-
-Dans cette optique, notre laboratoire travaille depuis plusieurs années sur une structuration des données génomiques sous la forme d’un graphe de pangénome, celle-ci permettant de compresser l’information de milliers de génomes tout en conservant l’organisation chromosomique des gènes. Nous avons ainsi développé des méthodes pour la reconstruction et l’analyse de pangénomes (méthode PPanGGOLiN) [3] et l’identification des régions de plasticité génomique (RPG; méthode panRGP) [4]. 
-
-Le présent sujet de thèse a pour objectif de réaliser de nouveaux développements méthodologiques  pour l’étude comparée des pangénomes. Il s’agira de développer de nouvelles méthodes bioinformatiques pour des comparaisons inter-pangénomes qui s’appuieront notamment sur les développements réalisés pour l’identification et la caractérisation des RPG en sous-modules fonctionnels (méthode panModule). Les RPG regroupent à la fois des régions qui sont échangées entre les souches par transfert horizontal de gènes (comme par exemple les îlots génomiques) et des régions perdues différentiellement dans différentes lignées. Elles sont d'une importance primordiale pour comprendre le potentiel adaptatif des bactéries. L’exploration de ces modules fonctionnels au sein de différentes espèces permettra de mieux comprendre la dynamique évolutive à l’origine de la diversité métabolique des microorganismes.
-
-Les algorithmes et outils développés au cours de ce projet seront mis en application afin d’étudier différents groupes bactériens d'intérêt médical, agronomique ou biotechnologique tels que les actinobactéries, les firmicutes ou les entérobactéries pour lesquelles de grandes quantités de données sont disponibles. Ces méthodes pourront être également appliquées à l’échelle d’un écosystème afin de comprendre la dynamique des génomes et les interactions entre différentes espèces vivant dans un même environnement. Une attention particulière sera donnée à l’analyse fonctionnelle des îlots génomiques au regard du métabolisme des organismes en termes de production de métabolites secondaires ou de voies cataboliques.
-
-Ce travail bénéficiera des développements et des outils intégrés au sein de la plateforme MicroScope (mage.genoscope.cns.fr/microscope) [5] ainsi que de l’expertise dans notre unité de recherche sur le métabolisme microbien. Les outils développés dans le cadre de la thèse seront valorisés au sein la plateforme MicroScope et permettront également de répondre aux besoins d’analyses des partenaires académiques et industriels. Une des originalités de ce travail de thèse réside dans l’approche pangénomique pour la comparaison de génomes qui permet de répondre à un des challenges de la bioanalyse à l’ère du big data en biologie. 
+\noindent \textbf{Résumé :} L’essor des projets de séquençage a généré plus d’un million de génomes procaryotes dans les bases publiques, nécessitant de nouvelles approches pour analyser cette masse de données. La suite logicielle PPanGGOLiN a été développée pour structurer ces informations sous forme de graphes de pangénome, permettant de compresser les données tout en conservant l’information de colocalisation des gènes. Elle intègre également des méthodes d’analyse de pangénome, panRGP, qui identifie les régions de plasticité génomique, et panModule, qui caractérise ces régions variables en sous-modules fonctionnels. Malgré ces avancées, aucune méthode ne permettait de comparer des pangénomes. Les travaux de cette thèse ont consisté à développer de nouvelles approches pour combler cette lacune. Tout d’abord, PPanGGOLiN a été enrichie par l’intégration de nouvelles méthodes, comme la recherche de contextes génomiques, et par une amélioration de son environnement logiciel. Ensuite, la méthode PANORAMA, qui se base sur les graphes de PPanGGOLiN,  a été conçue pour annoter des systèmes macromoléculaires, en combinant des critères de présence/absence de fonctions et de colocalisation génomique, et pour comparer des pangénomes. Appliqué aux systèmes de défense bactériens contre les phages, PANORAMA a permis d’identifier des systèmes et des sites d’insertions conservés entre différentes espèces. Finalement, un premier prototype de base  de données orientée graphe a été développé pour intégrer les données de plusieurs pangénomes afin d’exploiter au mieux leur information. Cette approche a permis d’analyser et de comparer des milliers de génomes bactériens et d’identifier des modules d’antibiorésistance communs à plusieurs espèces, mettant en lumière des mécanismes évolutifs partagés. Ces travaux ouvrent la voie à la pangénomique comparée, offrant un cadre inédit pour explorer le potentiel adaptatif des procaryotes et mieux comprendre leur dynamique évolutive. En facilitant la comparaison des pangénomes et l’identification de contextes génomiques conservés, ces développements contribuent à l’étude des interactions entre bactéries et à la caractérisation de systèmes biologiques d’intérêt.
 \end{multicols}
 
 \end{mdframed}
+% page des résumés à garder en 2ème page. Si les résumés sont trop longs pour tenir sur une seule et même page, on peut mettre un résumé par page
+% \thispagestyle{empty}
+% \newgeometry{top=1.5cm, bottom=1.25cm, left=2cm, right=2cm}
 
-\vspace{8mm}
+\vspace{-12pt}
+% \noindent 
+% %*****************************************************
+% %***** LOGO DE L'ED À CHANGER IMPÉRATIVEMENT *********
+% %*****************************************************
+% \includegraphics[height=2.45cm]{images/logos/logo_usp_SDSV.png}
+% \vspace{1cm}
+% %*****************************************************
 
 \begin{mdframed}[linecolor=Prune,linewidth=1]
 
 \textbf{Title:} Methods for comparative analysis of prokaryotic pangenomes: exploring interspecies genomic diversity for a better understanding of metabolism
 
 \noindent \textbf{Keywords:} Bioinformatics, Environmental microbiology, Pangenomics, Genome dynamics, Genomic island, Phage defense systems
-
+\vspace{-12pt}
 \begin{multicols}{2}
-\noindent \textbf{Abstract:} The last few years have seen the explosion of sequencing projects leading to a deluge of several hundred thousand genomes available in public databases. Comparative genomics approaches in microbiology now use thousands of genomes to analyze the diversity of a species. Indeed, many studies focus on the overall gene content of a species (the pangenome) to understand its evolution in terms of common and accessory genes with regard to epidemiological or environmental data [1]. Nevertheless, the processing of such mass of data imposes a paradigm shift in knowledge representation and in the algorithms used [2].
-
-In this context, our laboratory has been working several years on a new model to represent genomic data in the form of a pangenome graph, which makes it possible to compress the information of thousands of genomes while preserving the chromosomal organization of genes. We have thus developed methods for the reconstruction and analysis of pangenomes (PPanGGOLiN method) [3] and the identification of regions of genomic plasticity (RGPs; panRGP method) [4].
-
-The aim of this PhD thesis is to achieve new methodological developments for the comparative study of pangenomes. This will involve the development of  new bioinformatic methods for inter-pangenome comparisons, which will be particularly based on the developments carried out for the identification and characterization of RGPs in functional sub-modules (panModule method). RGPs include both regions which are exchanged between strains by horizontal gene transfer (such as genomic islands) and regions lost differentially among lineages. They are of paramount importance for understanding the adaptive potential of bacteria. The exploration of these functional modules in different species will provide a better understanding of the evolutionary dynamics behind the metabolic diversity of microorganisms.
-
-The algorithms and tools developed during this project will be applied to study different bacterial groups of medical, agronomic or biotechnological interest such as actinobacteria, firmicutes or enterobacteria for which large amounts of data are available. These methods might also be applied at the scale of an ecosystem in order to understand the dynamics of genomes and the interactions between different species living in the same environment. Particular attention will be given to the functional analysis of genomic islands with regard to the metabolism of organisms in terms of production of secondary metabolites or catabolic pathways.
-
-This work will benefit from the developments and tools integrated within the MicroScope platform (mage.genoscope.cns.fr/microscope) [5] as well as the expertise in our research unit on microbial metabolism. The tools developed in the context of the thesis will be promoted within the MicroScope platform to meet the analysis needs of academic and industrial partners. One of the originalities of this thesis work lies in the pangenomic approach for comparative genomics which addresses one of the challenges of bioanalysis in the era of big data in biology.
+\noindent \textbf{Abstract:} The boom in sequencing projects has generated over a million prokaryotic genomes in public databases, requiring new approaches to analyze this mass of data. The PPanGGOLiN software suite has been developed to structure this information in the form of pangenome graphs, enabling data compression while preserving gene colocalization information. It also integrates pangenome analysis methods: panRGP, which identifies regions of genomic plasticity, and panModule, which characterizes these variable regions into functional submodules. Despite these advances, there was no method for comparing pangenomes. The aim of this thesis was to develop new approaches to fill this gap. Firstly, PPanGGOLiN was enriched by integrating new methods, such as genomic context search, and by improving its software environment. Secondly, the PANORAMA method, based on PPanGGOLiN graphs, has been designed to annotate macromolecular systems, combining criteria of presence/absence of functions and genomic colocalization, and to compare pangenomes. Applied to bacterial phage defense systems, PANORAMA identified systems and insertion sites conserved between different species. Finally, a first prototype of a graph-oriented database was developed to integrate data from several pangenomes in order to make the most of their information. This approach has made it possible to analyze and compare thousands of bacterial genomes, and to identify antibiotic resistance modules common to several species, highlighting shared evolutionary mechanisms. This work paves the way for comparative pangenomics, offering a novel framework for exploring the adaptive potential of prokaryotes and better understanding their evolutionary dynamics. By facilitating the comparison of pangenomes and the identification of conserved genomic contexts, these developments contribute to the study of interactions between bacteria and the characterization of biological systems of interest.
 \end{multicols}
 \end{mdframed}

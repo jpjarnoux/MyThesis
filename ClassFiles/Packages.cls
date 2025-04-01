@@ -8,7 +8,8 @@
 \RequirePackage{amssymb}
 \RequirePackage{enumitem}
 \RequirePackage{caption}
-\captionsetup[figure]{font=small,labelfont=small}
+\captionsetup[figure]{font=footnotesize,labelfont=small}
+\captionsetup[table]{font=footnotesize,labelfont=small}
 \RequirePackage{xcolor} % où color selon l'installation
 \RequirePackage[xindy, acronyms]{glossaries}
 \RequirePackage{mdframed}
@@ -22,11 +23,14 @@
 \RequirePackage[absolute]{textpos} 
 \RequirePackage{colortbl}
 \RequirePackage{array}
-\RequirePackage[a4paper]{geometry}
+\RequirePackage[a4paper]{geometry}  % ,showframe=True
+\RequirePackage{changepage}
 \RequirePackage{subfloat}
 \RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{pdfpages}
+\RequirePackage{rotating}
+\RequirePackage{booktabs}
 \RequirePackage{etoolbox}
 \RequirePackage{hyperref}
 \hypersetup{ % paramétrage couleur des liens hypertextes, toujours garder colorlinks=true

@@ -1,1 +1,58 @@
 \part{De la génomique comparée à la pangénomique comparée}
+\label{part:PANORAMA}
+
+Avec l’augmentation du nombre de génomes disponibles, les approches traditionnelles basées sur l’analyse de génomes individuels montrent leurs limites. Le concept du pangénome s'est peu à peu imposé et la construction de graphes est de plus en plus répandue pour étudier leur diversité génétique. Il est désormais possible de générer un grand nombre de pangénomes, offrant pour chaque espèce une vision complète de la variabilité génétique. La comparaison de ces pangénomes offre alors l’opportunité d’identifier leurs similarités et spécificités respectives, en considérant simultanément l’ensemble des gènes.
+
+Dans cette perspective, nous avons développé PANORAMA, un outil dédié à l’intégration de méthodes de pangénomique comparée, facilitant ainsi l’analyse systématique des variations génétiques inter-pangénomiques.
+
+\chapter{PANORAMA : un nouvel outil pour la pangénomique comparée}
+\section{Prédiction des systèmes biologiques dans les pangénomes}
+
+L’annotation des pangénomes est essentielle pour donner du sens aux analyses pangénomiques, que ce soit le partitionnement, la recherche de structures (comme les modules) ou des arbres phylogénétiques. Certains outils, tels que Panaroo \cite{tonkin-hill_producing_2020} et PanTools \cite{sheikhizadeh_pantools_2016}, offrent la possibilité d’importer des annotations externes directement dans le graphe de pangénome. D’autres, comme PanGraph \cite{noll_pangraph_2023}, intègrent des méthodes d’alignement des éléments du pangénome (gènes ou familles de gènes) sur des bases de données fonctionnelles. PPanGGOLiN, quant à lui, intègre ces deux approches en ajoutant des métadonnées à tous les éléments du pangénome et en proposant une commande permettant d’aligner les séquences pangénomiques sur une base de données externe.
+
+Toutefois, ces approches se limitent à l’annotation des gènes ou des familles de gènes, à l’exception des métadonnées intégrées dans PPanGGOLiN. À ce jour, aucune méthode ne permet, à notre connaissance, d’identifier des structures fonctionnelles plus complexes, telles que des systèmes biologiques, dans le graphe de pangénome.
+
+La prédiction de systèmes biologiques dans les données génomiques, en particulier chez les procaryotes, repose sur un large éventail d’outils et de méthodes (\textit{cf.} \autoref{sec:sys_bio}). Cependant, ces approches sont centrées sur le génome individuel et ne prennent pas en compte l’ensemble de la diversité génétique de l'espèce. Or, intégrer cette diversité est crucial pour mieux comprendre l’évolution et le rôle fonctionnel de ces systèmes.
+
+Afin de pallier cette limitation, j’ai développé PANORAMA, un outil de pangénomique conçu pour prédire des systèmes biologiques dans les graphes de pangénome générés avec PPanGGOLiN. Cette méthode repose sur 2 points clés : (\textit{i}) Des modèles, similaires à ceux de MacSyFinder \cite{abby_macsyfinder_2014}, définissant des règles de présence/absence des gènes et leur organisation en synténie ;(\textit{ii}) une adaptation de la méthode de détection des contextes génomiques que j'ai développée dans PPanGGOLiN.
+
+\section{Comparaison des pangénomes}
+
+La majorité des études pangénomiques se concentrent sur la diversité génétique au sein d’une espèce ou d’un environnement donné. Bien que certaines recherches explorent le pangénome à des rangs taxonomiques supérieurs \cite{moulana_selection_2020}, les études comparant plusieurs pangénomes pour analyser la diversité entre différentes espèces procaryotes restent rares.
+
+\newpage
+
+Parmi les quelques travaux existants, C. Hyun \textit{et al.} \cite{hyun_comparative_2022} ont proposé une analyse comparative du pangénome de 12 espèces bactériennes pathogènes. Toutefois, leur approche ne repose pas sur le graphe de pangénome, mais sur la présence/absence des familles de gènes homologues dans les génomes. Leur étude se limite à la comparaison de certaines métriques associées aux pangénomes (telles que l’ouverture ou la loi de Heaps) ainsi qu’à l’annotation des familles de gènes.
+
+À ce jour, cette analyse manuelle et spécifique à un jeu de données particulier semble être la seule existante  qui compare des pangénomes. Aucun outil pangénomique ne permet encore une comparaison automatique et non spécifique de plusieurs graphes de pangénomes afin d’identifier des structures conservées ou spécifiques.
+
+Dans cette optique, j’ai intégré dans PANORAMA de nouvelles méthodes exploitant le graphe de pangénome ainsi que la composition en familles de gènes de structures telles que les spots, les modules ou les systèmes. Ces méthodes permettent de rechercher des éléments conservés entre plusieurs pangénomes. À notre connaissance, PANORAMA est le premier outil offrant une comparaison automatisée de graphes de pangénome, ouvrant ainsi la voie à une meilleure compréhension de la diversité métabolique et de la dynamique évolutive des génomes procaryotes.
+
+\chapter{Article : PANORAMA}
+
+\includepdf[pages=1-23]{Comparaison/PANORAMA_paper.pdf}
+
+\chapter{Conclusion et perspectives}
+
+\section{Prédiction de systèmes biologiques}
+
+Le développement de PANORAMA représente une nouvelle avancée pour l'analyse des pangénomes procaryotes, en proposant une approche pour l'identification des systèmes biologiques. Contrairement aux méthodes traditionnelles qui reposent principalement sur l’annotation de gènes individuels, PANORAMA exploite directement le graphe de pangénome, prenant ainsi en compte la diversité globale des génomes. La méthode de prédiction repose sur l'utilisation d’une base de données HMM et d’un ensemble de modèles spécifiques, permettant d’identifier et de contextualiser les systèmes biologiques.
+
+En exploitant les pangénomes générés par PPanGGOLiN, il devient possible d’associer ces systèmes aux RGPs, aux spots et aux modules, ce qui enrichit l’annotation réciproque de ces éléments. L’utilisation du pangénome permet également d’identifier des systèmes autrement inaccessibles aux méthodes classiques, notamment en permettant l’annotation des fragments de gènes à partir des familles. De plus, cette approche permet la détection de systèmes "fractionnés", \textit{i.e.} des systèmes dont les composants ne sont pas colocalisés dans un même génome, en raison d’insertions génomiques ou de leur position en bordure de contigs.
+
+Dans la modélisation des systèmes, nous avons introduit un nouveau niveau de description, en regroupant les familles de gènes en unités fonctionnelles, ce qui améliore la caractérisation des modèles. PANORAMA ne possède pas de modèle propre, mais il permet de traduire des modèles issus de plusieurs bases de données existantes, telles que PADLOC, DefenseFinder et MacSyModels. Toutefois, la conversion entre ces bases n’est pas triviale : certaines différences dans les paramètres peuvent rendre la correspondance complexe, voire impossible. Néanmoins, la grammaire choisie et la lecture des modèles sont suffisamment simples et flexibles pour permettre l'écriture manuelle de modèles, et donc l'intégration de bases de données de systèmes propres et spécifiques. 
+
+Nous prévoyons d’étendre cette approche à d’autres bases, comme les modules métaboliques de la base de données KEGG \cite{kanehisa_kegg_2025}. Ces modèles sont représentés sous une \textbf{forme normale disjonctive} (FND), qui utilise uniquement les opérateurs logiques \textit{et}, \textit{ou} et \textit{non} (ce dernier ne pouvant s’appliquer qu’à un élément isolé). Si cette grammaire était standardisée à toutes les BD de systèmes, cela faciliterait les conversions entre bases et permettrait l’automatisation des traductions. De plus, elle ouvrirait la possibilité d’optimiser les expressions en appliquant des algorithmes classiques de minimisation, rendant ainsi la recherche de systèmes plus efficace. Toutefois, la FND présente certaines limites : elle ne prend pas en compte des paramètres quantitatifs comme la transitivité ou les règles de \textit{quorum} et, dans le cas de modèles complexes, elle peut générer des expressions de taille exponentielle, difficiles à interpréter.
+
+\newpage
+
+Nous avons testé PANORAMA sur plusieurs bases de données, en particulier sur les modèles de défense contre les phages, où la méthode a démontré sa robustesse et son efficacité. Cependant, son application à d’autres modèles, comme ceux de conjugaison de MacSyFinder, a révélé certaines limites. Par exemple, une valeur élevée de transitivité (500 dans le modèle \textit{T4SS\_typeB} des plasmides) entraîne un goulot d’étranglement algorithmique. Cette difficulté provient d’une recherche de contexte extrêmement complexe, générant un graphe avec un nombre d’arêtes considérable, nécessitant ensuite un filtrage intensif. L’algorithme actuel n’est pas conçu pour traiter de telles valeurs. Une solution envisageable serait de distinguer les familles en unités fonctionnelles distinctes et d’introduire un mot-clé spécifique qui ne reconstruirait pas directement le contexte entre ces unités, mais se limiterait à rechercher un chemin d’une taille correspondant à la transitivité spécifiée.
+
+\section{Comparaison de pangénomes}
+
+PANORAMA ouvre également la voie aux approches de pangénomique comparée. En recherchant et comparant des structures identifiées dans les graphes de pangénome, PANORAMA peut extraire les éléments conservés ou spécifiques à certains groupes d’organismes. Il devient alors possible d’identifier des liens évolutifs, de détecter des modules fonctionnels partagés et d’étudier l’émergence ou la disparition de systèmes biologiques, en prenant en compte toute la diversité génomique. Cette capacité à comparer les graphes de pangénomes offre un nouveau cadre d’analyse pour mieux comprendre l’évolution et l’organisation des génomes chez les procaryotes.
+
+Pour ce faire, notre méthode repose sur un score (GFRR) permettant d’évaluer la similarité en contenu en famille de gènes entre les éléments des pangénomes. Ces éléments doivent au préalable être détectés au sein du pangénome afin d’assurer la robustesse de la comparaison. L’identification de structures conservées, \textit{i.e.} des ensembles de familles de gènes partageant une organisation pangénomique similaire, reste un défi en cours d’exploration. Une piste repose sur l’application de méthodes de \textit{machine learning}. En s’appuyant sur des modèles entraînés sur des structures connues, il serait possible de détecter et de classifier de nouvelles régions d’intérêt, ouvrant ainsi la voie à la prédiction de structures conservées inédites entre différentes espèces.
+
+
+L'ensemble des développements méthodologique de PANORAMA ont pu être présentés dans plusieurs conférences, sous forme de \textit{talk} et de poster (\textit{cf.} Annexes \ref{Ann:Communication}). Un article présentant PANORAMA sera prochainement soumis.
