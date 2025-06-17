@@ -61,7 +61,7 @@ Les graphes de De Bruijn (De Bruijn Graph : DBG) sont des graphes orientés dont
 
 Les DBG, permettent d'avoir une structure compacte des séquences du pangénome. Les n\oe uds et les arêtes sont colorées en fonction des génomes dans lesquels ils sont retrouvés. Les DBG peuvent être compactés en cDBG, en fusionnant chaque région \textit{core}, \textit{i.e.} chaque suite de n\oe uds avec une seule arête entre chaque n\oe ud. Ces nouveaux n\oe uds fusionnés sont appelés "\textit{unitig"} et seront étiquetés avec la séquence combinée des k-mers.
 
-L'une des premières méthodes développées utilisant des DBG, est la méthode Cortex \cite{iqbal_novo_2012}, qui construit un DBG "coloré" (les arêtes et les n\oe uds sont étiquetés par les échantillons dans lesquels ils sont trouvés). À partir de ce DBG coloré, il est possible d'identifier les variants et de les associer à un génotype. Des outils plus récents, comme Bifrost \cite{holley_bifrost_2020}, améliorent les méthodes de coloration de DBG, permettant d'augmenter le volume de données pris en compte et supportant la mise à jour du graphe. Les auteurs de Bifrost ont notamment appliqué leur méthode sur une collection de plus de 100 000 génomes de \textit{Salmonella} \cite{luhmann_blastfrost_2021}, leur permettant d'identifier des gènes reliés à des îlots de pathogénicité et à une résistance aux fluoroquinolones\footnote{Classe d'antibiotique utilisée pour traiter les infections bactériennes graves.}.
+L'une des premières méthodes développées utilisant des DBG est la méthode Cortex \cite{iqbal_novo_2012}, qui construit un DBG "coloré" (les arêtes et les n\oe uds sont étiquetés par les échantillons dans lesquels ils sont trouvés). À partir de ce DBG coloré, il est possible d'identifier les variants et de les associer à un génotype. Des outils plus récents, comme Bifrost \cite{holley_bifrost_2020}, améliorent les méthodes de coloration de DBG, permettant d'augmenter le volume de données pris en compte et supportant la mise à jour du graphe. Les auteurs de Bifrost ont notamment appliqué leur méthode sur une collection de plus de 100 000 génomes de \textit{Salmonella} \cite{luhmann_blastfrost_2021}, leur permettant d'identifier des gènes reliés à des îlots de pathogénicité et à une résistance aux fluoroquinolones\footnote{Classe d'antibiotique utilisée pour traiter les infections bactériennes graves.}.
 
 \newpage
 SplitMEM \cite{marcus_splitmem_2014}, permet de construire rapidement et efficacement des cDBG en intégrant une méthode appelée "saut de suffixe"\footnote{Le cDBG est relié à des arbres de suffixes, un saut de suffixe permet depuis un suffixe à l'extrémité d'une branche de l'arbre de sauté vers un même suffixe plus proche de la racine. Les sauts se poursuivent jusqu'à atteindre le suffixe le plus proche de la racine. Le chemin restant correspond au chemin le plus court sans ramification, entre la racine et le suffixe.}, qui permet de construire le cDBG sans passer par un DBG. L'outil permet ensuite de détecter dans l'ensemble des génomes ou dans un sous-ensemble de génomes les régions compressées (appelées \textit{Maximum Exact Matches} : MEMs), correspondant au \textit{core genome}. Cet outil est linéaire en temps et en espace pour identifier le \textit{core genome}, mais ne permet pas de mener d'autres analyses. De plus, la méthode a été testée sur un jeu de 62 génomes de \textit{E. coli}, le caractère linéaire est donc à vérifier sur de plus grands jeux de données.
@@ -92,7 +92,7 @@ L'utilisation des graphes de séquences pour les GWAS permet de détecter fineme
         \hline
         VG toolkit & Variant prédéterminé & \cite{garrison_variation_2018} \\
         \hline
-        Minigraph & Variant prédéterminé & \cite{li_design_2020} \\
+        Minigraph & Alignement sur graphe & \cite{li_design_2020} \\
         \hline
         PanVC & Variant prédéterminé & \cite{norri_founder_2021} \\
         \hline
@@ -116,7 +116,6 @@ L'utilisation des graphes de séquences pour les GWAS permet de détecter fineme
         \hline
         PanVA & Visualisation & \cite{van_den_brandt_panva_2024} \\
         \hline
-        
     \end{tabular}
     \caption[Outils de pangénomique basés sur les séquences]{\textbf{Liste non exhaustive d'outils de pangénomique basés sur les séquences.}}
     \label{tab:pangenomicToolsSeq}

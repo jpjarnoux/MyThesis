@@ -13,89 +13,9 @@ Nous avons présenté une grande variété de méthodes et d'outils de pangénom
 
 Un premier défi concerne la représentation et la visualisation des pangénomes. En effet, ceux-ci doivent être visualisables par l'\oe il humain tout en intégrant l’ensemble de l’information génomique. Différentes approches ont été développées pour répondre à cette problématique, notamment des outils de visualisation interactifs. À titre d’exemple, Pan-Tetris\cite{hennig_pan-tetris_2015} permet de visualiser et de modifier la composition des groupes de gènes grâce à une technique inspirée du jeu Tetris. PanViz\cite{pedersen_panviz_2017} facilite la comparaison des génomes individuels aux pangénomes avec une navigation basée sur l'ontologie des gènes. PanVa\cite{van_den_brandt_panva_2024}, utilisant les pangénomes de PanTools\cite{sheikhizadeh_pantools_2016}, propose une approche centrée sur la variabilité structurale, permettant une analyse flexible des pangénomes en tenant compte des variations génomiques complexes. Enfin, PANACHE\cite{durant_panache_2021} propose une visualisation linéarisée des pangénomes, affichant la présence ou l’absence des blocs de séquences sous forme de navigateur génomique.
 
-Un second défi crucial est celui du stockage et de la gestion des données pangénomiques. Contrairement aux génomes individuels, généralement stockés sous forme de texte et reliés à des bases de données, les pangénomes sont des structures plus complexes qui ne peuvent être stockées sous un format linéaire. Les BD doivent donc permettre un accès rapide et efficace aux informations, tout en étant mises à jour régulièrement pour suivre l’augmentation du volume des données génomiques. Des BD comme panKB \cite{sun_pankb_2025}, permettent d'avoir accès à des informations sur des pangénomes précalculés, reliés à des métadonnées comme les publications de références, les informations sur l'origine des génomes\dots Cependant, le pangénome en lui-même n'est pas disponible et seuls les résultats d'analyse sont disponibles.
+Un second défi crucial est celui du stockage et de la gestion des données pangénomiques. Contrairement aux génomes individuels, généralement stockés sous forme de texte et reliés à des bases de données, les pangénomes sont des structures plus complexes qui ne peuvent être stockées sous un format linéaire. Les BD doivent donc permettre un accès rapide et efficace aux informations, tout en étant mises à jour régulièrement pour suivre l’augmentation du volume des données génomiques. Des BD comme panKB \cite{sun_pankb_2025}, permettent d'avoir accès à des informations sur des pangénomes précalculés, reliés à des métadonnées comme : les publications de référence, les informations sur l'origine des génomes\dots 
+Cependant, le pangénome en lui-même n'est pas disponible et seuls les résultats d'analyse sont disponibles.
 
-Enfin, un défi essentiel concerne la construction du pangénome. Le choix des méthodes influence fortement le résultat final, mais les données d’entrée jouent également un rôle fondamental. L’objectif étant de représenter au mieux la diversité génomique, il est important de maximiser cette diversité tout en évitant les biais, tels que la surreprésentation de génomes pathogènes dans les bases de données. Un équilibre est nécessaire : trop de variations dans les données d’entrée peuvent complexifier l’analyse, en rendant par exemple les graphes de pangénome difficilement exploitables. La qualité des génomes, des annotations et des bases de données est également un facteur déterminant pour garantir la robustesse des analyses pangénomiques.
+Enfin, un défi essentiel concerne la construction du pangénome. Le choix des méthodes influence fortement le résultat final, mais les données d’entrée jouent également un rôle fondamental. L’objectif étant de représenter au mieux la diversité génomique, il est important de maximiser cette diversité tout en évitant les biais, tels que la surreprésentation de génomes pathogènes dans les bases de données. Un équilibre est nécessaire : trop de variations dans les données d’entrée peuvent complexifier l’analyse, en rendant par exemple les graphes de pangénome difficilement exploitables. La qualité des génomes, des annotations et des bases de données, sont également des facteurs déterminants pour garantir la robustesse des analyses pangénomiques.
 
-Pour répondre à ces défis, les méthodes et les outils de pangénomique sont en constante évolution. Avec ces progrès, divers domaines de la microbiologie voient progressivement s'intégrer des analyses pangénomiques en routine. Cette intégration repose en partie sur des plateformes qui rendent ces outils accessibles et exploitables par la communauté scientifique. Par exemple, MicroScope\cite{vallenet_microscope_2020} permet de construire des pangénomes procaryotes à l’aide de PPanGGOLiN \cite{gautreau_ppanggolin_2020} et d’identifier les régions de plasticité génomique (RGP) grâce à la méthode panRGP\cite{bazin_panrgp_2020}. MicroScope constitue alors un point entre les données génomiques, la production de pangénomes et leur utilisation effective, contribuant ainsi à relever progressivement les défis liés à la visualisation, au stockage et à la construction des pangénomes.
-
-% \begin{table}[htbp]
-%     \centering
-%     \footnotesize
-%     \begin{tabular}{|p{.25\textwidth}|p{.15\textwidth}|p{.35\textwidth}|p{.25\textwidth}|}
-%         \hline
-%         Nom & Type de pangénome & Méthode & Référence \\
-%         \hline
-%         NGSPanPipe & Séquence & Séquence représentative & \cite{kulsum_ngspanpipe_2018} \\
-%         \hline
-%         Spine & Séquence & Séquence représentative & \cite{ozer_characterization_2014}\\
-%         \hline
-%         VG toolkit & Séquence & Variant prédéterminé & \cite{garrison_variation_2018} \\
-%         \hline
-%         Minigraph & Séquence & Variant prédéterminé & \cite{li_design_2020} \\
-%         \hline
-%         PanVC & Séquence & Variant prédéterminé & \cite{norri_founder_2021} \\
-%         \hline
-%         Minigraph-Cactus & Séquence & MSA & \cite{hickey_pangenome_2024}\\
-%         \hline
-%         Harvest & Séquence & MSA & \cite{treangen_harvest_2014} \\
-%         \hline
-%         PGGB & Séquence & MSA & \cite{garrison_building_2024}\\
-%         \hline
-%         Cortex & Séquence & graphe de De Bruijn & \cite{iqbal_novo_2012} \\
-%         \hline
-%         Bifrost & Séquence & graphe de De Bruijn & \cite{holley_bifrost_2020} \\
-%         \hline
-%         SplitMEM & Séquence & graphe de De Bruijn & \cite{marcus_splitmem_2014} \\
-%         \hline
-%         PanTools & Séquence & graphe de De Bruijn & \cite{sheikhizadeh_pantools_2016} \\
-%         \hline
-%         twoPaCo & Séquence & graphe de De Bruijn & \cite{minkin_twopaco_2017}\\
-%         \hline
-%         DBGWas & Séquence & graphe de De Bruijn & \cite{jaillard_fast_2018}\\
-%         \hline
-%         EDGAR & Gènes & matrice présence/abscence & \cite{blom_edgar_2009}\\
-%         \hline
-%         PGAP & Gènes & matrice présence/abscence & \cite{zhao_pgap_2012}\\
-%         \hline
-%         PanOCT & Gènes & Clustering d'orthologue & \cite{fouts_panoct_2012}\\
-%         \hline
-%         GET\textunderscore HOMOLOGUES & Gènes & Clustering d'orthologue & \cite{contreras-moreira_get_homologues_2013} \\
-%         \hline
-%         PanACEA & Gènes & Visualisation & \cite{clarke_panacea_2018}\\
-%         \hline
-%         PanFunPro & Gènes & Familles de profil fonctionnelle & \cite{lukjancenko_panfunpro_2013}\\
-%         \hline
-%         Roary & Gènes & Graphe de famille de gène & \cite{page_roary_2015}\\
-%         \hline
-%         Piggy & Gènes & Analyse région intergénique & \cite{thorpe_piggy_2018}\\
-%         \hline
-%         Ptolemy & Gènes & Graphe de famille de gène & \cite{thorpe_piggy_2018}\\
-%         \hline
-%         PIRATE  & Gènes & Graphe de famille de gène & \cite{bayliss_pirate_2019}\\
-%         \hline
-%         Panaroo & Gènes & Graphe de famille de gène & \cite{tonkin-hill_producing_2020}\\
-%         \hline
-%         PanACoTA & Gènes & Graphe \& Phylogénie & \cite{perrin_panacota_2021} \\
-%         \hline
-%         Panakeia & Gènes & Graphe de famille de gène & \cite{beier_panakeia_2022}\\
-%         \hline
-%         PanPhlAn & Gènes & Graphe de données métagénomique & \cite{scholz_strain-level_2016}\\
-%         \hline
-%         MSPminer & Gènes & Graphe de données métagénomique & \cite{plaza_onate_mspminer_2019}\\
-%         \hline
-%         mOTUpan & Gènes & Graphe de données métagénomique & \cite{buck_motupan_2022}\\
-%         \hline
-%         Pan-Tetris & Gènes & Visualisation & \cite{hennig_pan-tetris_2015}\\
-%         \hline
-%         PanViz & Gènes & Visualisation & \cite{pedersen_panviz_2017}\\
-%         \hline
-%         PanVA & Sequence & Visualisation & \cite{van_den_brandt_panva_2024} \\
-%         \hline
-%         Panache & Gènes & Visualisation & \cite{durant_panache_2021}\\
-%         \hline
-        
-%     \end{tabular}
-%     \caption[Outils de pangénomique]{Liste non exhaustive d'outils de pangénomique}
-%     \label{tab:pangenomicTools}
-% \end{table}
+Pour répondre à ces défis, les méthodes et les outils de pangénomique sont en constante évolution. Avec ces progrès, divers domaines de la microbiologie voient progressivement s'intégrer des analyses pangénomiques en routine. Cette intégration repose en partie sur des plateformes qui rendent ces outils accessibles et exploitables par la communauté scientifique. Par exemple, MicroScope\cite{vallenet_microscope_2020} permet de construire des pangénomes procaryotes à l’aide de PPanGGOLiN \cite{gautreau_ppanggolin_2020} et d’identifier les régions de plasticité génomique (RGP) grâce à la méthode panRGP\cite{bazin_panrgp_2020}. MicroScope constitue alors un point d'intersection entre les données génomiques, la production de pangénomes et leur utilisation effective, contribuant ainsi à relever progressivement les défis liés à la visualisation, au stockage et à la construction des pangénomes.

@@ -16,7 +16,7 @@ Toujours lié à l'augmentation du volume de données, les outils utilisant ces 
 \paragraph{Alignement multiple}
 \label{paragraph:MSA}
 
-L'alignement multiple des séquences (MSA pour \textit{Multiple Sequence Alignment} en anglais) vise à aligner plusieurs séquences simultanément. C'est une extension de l'alignement en paire. Ces alignements ont l'intérêt de révéler des régions conservées et ainsi d'identifier des relations évolutives, par contre la complexité est accrue et il est donc nécessaire d'introduire des algorithmes plus puissants.
+L'alignement multiple des séquences (MSA pour \textit{Multiple Sequence Alignment} en anglais) vise à aligner plusieurs séquences simultanément. C'est une extension de l'alignement en paire. Ces alignements ont l'intérêt de révéler des régions conservées et ainsi d'identifier des relations évolutives ; par contre, la complexité est accrue et il est donc nécessaire d'introduire des algorithmes plus puissants.
 
 Les premiers algorithmes étaient des algorithmes exhaustifs \cite{stoye_multiple_1998}, et tout comme pour l'alignement de paires de séquences, rapidement des algorithmes heuristiques ont été publiés. En 1988, Higgins et Sharp publient CLUSTAL \cite{higgins_clustal_1988}, une méthode d'alignement progressive pour obtenir un alignement multiple. Elle construit l’alignement en assemblant progressivement les séquences selon une hiérarchie basée sur une matrice de distance ou un arbre guide. D'autres méthodes adopteront cette approche, comme MUSCLE \cite{edgar_muscle_2004} mais ce dernier apporte un côté itératif. Ces méthodes sont rapides, mais peuvent être sensibles aux erreurs accumulées dans les étapes initiales.
 
